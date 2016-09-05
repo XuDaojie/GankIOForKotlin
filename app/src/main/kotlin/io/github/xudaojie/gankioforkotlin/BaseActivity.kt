@@ -8,11 +8,10 @@ import android.support.v7.app.AppCompatActivity
  * Created by xdj on 16/9/5.
  */
 
-class BaseActivity : AppCompatActivity() {
-    protected var mActivity: Activity
+open class BaseActivity : AppCompatActivity() {
+    protected var mActivity: Activity = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mActivity = this
     }
 }
