@@ -6,21 +6,24 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import io.github.xudaojie.gankioforkotlin.R
+import io.github.xudaojie.gankioforkotlin.bean.GankData
 import io.github.xudaojie.gankioforkotlin.detail.DetailActivity
+import kotlinx.android.synthetic.main.gank_list_item.view.*
 
 /**
  * Created by xdj on 16/9/5.
  */
-class HomeListAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class HomeListAdapter(val context: Context, val values: GankData) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        var vh = holder as MyViewHolder
+        val vh = holder as MyViewHolder
         vh.itemView.setOnClickListener {
             val i = Intent(context, DetailActivity::class.java)
             context.startActivity(i)
         }
-        vh.bindViewHolder()
+        vh.bindViewHolder(values.results!![position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
@@ -30,11 +33,14 @@ class HomeListAdapter(var context: Context) : RecyclerView.Adapter<RecyclerView.
     }
 
     override fun getItemCount(): Int {
-        return 15
+        return values.results!!.size
     }
 
-    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bindViewHolder() {
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bindViewHolder(result: GankData.ResultsBean) {
+            Picasso.with(context)
+                    .load(result.url)
+                    .into(itemView.image)
         }
     }
 }
