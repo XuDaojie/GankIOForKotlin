@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity
  */
 
 open class BaseActivity : AppCompatActivity() {
-    protected var mActivity: Activity = this
+    protected val mActivity: Activity = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
