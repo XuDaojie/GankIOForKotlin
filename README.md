@@ -16,6 +16,19 @@
     ```
 6. `xxx as View`表示将`xxx`强转为`View`
 7. 生命参数关键字`var`、`val`。`var`是可变参数,`val`是不可变参数,类似**Java**中增加了`final`关键字
+8. Kotlin中使用`object`关键字声明类时,表示此类为单例类,类中所有方法属性都为静态的 
+9. `interface`与`Java`不同,可以带有默认实现
+10. `var str: String? = null` **?**表示c允许为空
+11. `str?.length()`等同于
+    ``` java
+    if (c != null) {
+        c.length();
+    }
+    ```
+
+### Pattern Matching
+TODO
 
 ## 吃水不忘挖井人
 [android CoordinatorLayout使用](http://blog.csdn.net/xyz_lmn/article/details/48055919)
+[使用Kotlin进行Android开发](http://ragnraok.github.io/using-kotlin-to-write-android-app.html)
