@@ -46,4 +46,7 @@ dependencies {
 //    compile 'com.google.code.gson:gson:2.7'
 
     compile 'jp.wasabeef:recyclerview-animators:2.2.4'
+    compile('com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.9.3@aar', {
+        transitive = true
+    })
 }

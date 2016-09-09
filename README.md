@@ -29,6 +29,7 @@
     ``` kotlin
     val name = if (args.isNotEmpty()) args[0] else "World"
     ```
+13. `nullable!!.toFloat()`强制转换为非空对象,对象为`null`则抛出异常
 
 ### Pattern Matching
 TODO
@@ -36,3 +37,4 @@ TODO
 ## 吃水不忘挖井人
 [android CoordinatorLayout使用](http://blog.csdn.net/xyz_lmn/article/details/48055919)
 [使用Kotlin进行Android开发](http://ragnraok.github.io/using-kotlin-to-write-android-app.html)
+[Android开发必备知识：为什么说Kotlin值得一试](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0226/4000.html)

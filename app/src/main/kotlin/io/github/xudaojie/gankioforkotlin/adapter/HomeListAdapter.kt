@@ -25,6 +25,7 @@ class HomeListAdapter(val context: Context, val values: GankData) : RecyclerView
             val i = Intent(context, DetailActivity::class.java)
 //            context.startActivity(i)
             i.putExtra("url", values.results!![position].url)
+            i.putExtra("published_at", values.results!![position].createdAt)
             context.startActivity(i,
                     ActivityOptions.makeSceneTransitionAnimation(
                             context as Activity, holder.itemView, "image").toBundle())

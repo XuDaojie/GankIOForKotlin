@@ -21,7 +21,7 @@ class DayData {
 
     class ResultsBean {
         /**
-         * _id : 56cc6d23421aa95caa707a69
+         * _id : 56cc6d23421aa95caa707a69w
          * createdAt : 2015-08-06T07:15:52.65Z
          * desc : 类似Link Bubble的悬浮式操作设计
          * publishedAt : 2015-08-07T03:57:48.45Z
@@ -31,6 +31,7 @@ class DayData {
          * who : mthli
          */
 
+        @SerializedName(value = "Android")
         var android: List<DataBean>? = null
         /**
          * _id : 56cc6d1d421aa95caa707769
@@ -43,6 +44,7 @@ class DayData {
          * who : CallMeWhy
          */
 
+        @SerializedName(value = "iOS")
         var ios: List<DataBean>? = null
         /**
          * _id : 56cc6d23421aa95caa707c68
@@ -97,6 +99,9 @@ class DayData {
 
         @SerializedName(value = "福利")
         var weal: List<DataBean>? = null
+
+        @SerializedName(value = "前端")
+        var web: List<DataBean>? = null
 
         class DataBean {
             var _id: String? = null
