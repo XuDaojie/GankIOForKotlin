@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import io.github.xudaojie.gankioforkotlin.BaseFragment
 import io.github.xudaojie.gankioforkotlin.R
 import io.github.xudaojie.gankioforkotlin.adapter.DetailListAdapter
@@ -19,9 +20,20 @@ import kotlinx.android.synthetic.main.detail_frag.view.*
 class DetailFragment : BaseFragment() {
 
     companion object {
-        fun newInstance(): DetailFragment {
-            return DetailFragment()
+        fun newInstance(url: String): DetailFragment {
+            val args = Bundle()
+            args.putString("url", url)
+            val fragment = DetailFragment()
+            fragment.arguments = args
+            return fragment
         }
+    }
+
+    private var url: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        url = arguments?.getString("url").toString()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,6 +46,8 @@ class DetailFragment : BaseFragment() {
         mRoot!!.recycler_view.addItemDecoration(divider)
         mRoot!!.recycler_view.layoutManager = LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false)
         mRoot!!.recycler_view.adapter = DetailListAdapter(mActivity!!)
+
+        Picasso.with(mActivity).load(url).into(mRoot?.ivImage)
 
         return mRoot
     }

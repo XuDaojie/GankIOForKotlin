@@ -1,0 +1,16 @@
+<resources>
+
+    <!--&lt;!&ndash; Base application theme. &ndash;&gt;-->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+
+        <!--<item name="android:windowBackground">@color/colorWindowBackground</item>-->
+
+        <!--&lt;!&ndash;允许使用Activity Transition动画&ndash;&gt;-->
+        <!--<item name="android:windowContentTransitions">true</item>-->
+    <!--</style>-->
+
+</resources>

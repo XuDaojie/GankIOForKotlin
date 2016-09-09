@@ -62,7 +62,6 @@ class HomeFragment : BaseFragment() {
             }
 
         })
-
         return mRoot
     }
 }

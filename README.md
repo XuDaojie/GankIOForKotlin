@@ -25,6 +25,10 @@
         c.length();
     }
     ```
+12. 代码块支持返回值,例如`if`、`else`
+    ``` kotlin
+    val name = if (args.isNotEmpty()) args[0] else "World"
+    ```
 
 ### Pattern Matching
 TODO

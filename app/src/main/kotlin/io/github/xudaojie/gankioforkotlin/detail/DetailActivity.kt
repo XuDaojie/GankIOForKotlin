@@ -16,7 +16,7 @@ class DetailActivity : BaseActivity() {
 
         var fragment = supportFragmentManager.findFragmentById(R.id.content_frame)
         if (fragment == null) {
-            fragment = DetailFragment.newInstance()
+            fragment = DetailFragment.newInstance(intent.getStringExtra("url"))
             ActivityUtils.addFragmentToActivity(supportFragmentManager, fragment, R.id.content_frame)
         }
     }

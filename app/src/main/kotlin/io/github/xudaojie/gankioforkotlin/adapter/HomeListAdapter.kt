@@ -1,5 +1,7 @@
 package io.github.xudaojie.gankioforkotlin.adapter
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
@@ -21,7 +23,11 @@ class HomeListAdapter(val context: Context, val values: GankData) : RecyclerView
         val vh = holder as MyViewHolder
         vh.itemView.setOnClickListener {
             val i = Intent(context, DetailActivity::class.java)
-            context.startActivity(i)
+//            context.startActivity(i)
+            i.putExtra("url", values.results!![position].url)
+            context.startActivity(i,
+                    ActivityOptions.makeSceneTransitionAnimation(
+                            context as Activity, holder.itemView, "image").toBundle())
         }
         vh.bindViewHolder(values.results!![position])
     }
