@@ -75,6 +75,8 @@ class DetailListAdapter(val context: Context, val data: DayData) :
             return data.results?.weal!!
         } else if (category.equals("前端")) {
             return data.results?.web!!
+        } else if (category.equals("App")) {
+            return data.results?.app!!
         }
         return data.results?.android!!
     }
@@ -87,7 +89,8 @@ class DetailListAdapter(val context: Context, val data: DayData) :
 
     class ChildViewHolder(itemView: View) : AbstractExpandableItemViewHolder(itemView) {
         fun bindViewHolder(itemData: DayData.ResultsBean.DataBean) {
-            itemView.text2.text = itemData.desc + " by " + itemData.who
+            itemView.text2.text = "- " + itemData.desc
+            itemView.who_tv.text = "by " + itemData.who
         }
     }
 }

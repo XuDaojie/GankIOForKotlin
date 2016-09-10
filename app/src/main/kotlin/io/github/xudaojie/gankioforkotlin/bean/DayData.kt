@@ -103,6 +103,9 @@ class DayData {
         @SerializedName(value = "前端")
         var web: List<DataBean>? = null
 
+        @SerializedName(value = "App")
+        var app: List<DataBean>? = null
+
         class DataBean {
             var _id: String? = null
             var createdAt: String? = null

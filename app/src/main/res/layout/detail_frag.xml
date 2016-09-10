@@ -28,15 +28,6 @@
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7"/>
 
-            <ImageButton
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_play_circle_filled_black_48dp"
-                app:layout_collapseMode="parallax"/>
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"

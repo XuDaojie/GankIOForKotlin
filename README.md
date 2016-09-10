@@ -34,7 +34,20 @@
 ### Pattern Matching
 TODO
 
+### Android 原生分享
+``` kotlin
+var shareIntent = Intent()
+shareIntent.action = Intent.ACTION_SEND
+shareIntent.type = "text/plain" // image/ 图片和文字不能同时存在
+shareIntent.putExtra(Intent.EXTRA_SUBJECT, "title")
+shareIntent.putExtra(Intent.EXTRA_TEXT, "text")
+
+shareIntent = Intent.createChooser(shareIntent, "分享到...")
+startActivity(shareIntent)
+```
+
 ## 吃水不忘挖井人
 [android CoordinatorLayout使用](http://blog.csdn.net/xyz_lmn/article/details/48055919)
 [使用Kotlin进行Android开发](http://ragnraok.github.io/using-kotlin-to-write-android-app.html)
 [Android开发必备知识：为什么说Kotlin值得一试](http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2016/0226/4000.html)
+[Android-原生系统分享小记](http://www.jianshu.com/p/88f166dd43b7)
