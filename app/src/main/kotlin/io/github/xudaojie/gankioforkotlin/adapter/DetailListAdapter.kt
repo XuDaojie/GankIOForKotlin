@@ -1,14 +1,15 @@
 package io.github.xudaojie.gankioforkotlin.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemAdapter
+import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemViewHolder
 import io.github.xudaojie.gankioforkotlin.R
 import io.github.xudaojie.gankioforkotlin.bean.DayData
 import kotlinx.android.synthetic.main.detail_child_item.view.*
+import kotlinx.android.synthetic.main.detail_group_item.view.*
 
 /**
  * Created by xdj on 16/9/5.
@@ -21,7 +22,7 @@ class DetailListAdapter(val context: Context, val data: DayData) :
     }
 
     override fun getGroupId(groupPosition: Int): Long {
-        return groupPosition.hashCode().toLong()
+        return groupPosition.toLong()
     }
 
     override fun onCreateChildViewHolder(parent: ViewGroup?, viewType: Int): ChildViewHolder {
@@ -30,11 +31,13 @@ class DetailListAdapter(val context: Context, val data: DayData) :
     }
 
     override fun onBindChildViewHolder(holder: ChildViewHolder?, groupPosition: Int, childPosition: Int, viewType: Int) {
-        holder!!.bindViewHolder(data.results!!.android!![0])
+        val category = data.category!![groupPosition]
+
+        holder!!.bindViewHolder(getChildItem(category)[childPosition])
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
-        return childPosition.hashCode().toLong()
+        return 0
     }
 
     override fun getGroupCount(): Int {
@@ -43,22 +46,7 @@ class DetailListAdapter(val context: Context, val data: DayData) :
 
     override fun getChildCount(groupPosition: Int): Int {
         val category = data.category!![groupPosition]
-        if (category.equals("Android")) {
-            return data.results?.android!!.size
-        } else if (category.equals("iOS")) {
-            return data.results?.ios!!.size
-        } else if (category.equals("休息视频")) {
-            return data.results?.video!!.size
-        } else if (category.equals("拓展资源")) {
-            return data.results?.resource!!.size
-        } else if (category.equals("瞎推荐")) {
-            return data.results?.recommend!!.size
-        } else if (category.equals("福利")) {
-            return data.results?.weal!!.size
-        } else if (category.equals("前端")) {
-            return data.results?.web!!.size
-        }
-        return 0
+        return getChildItem(category).size
     }
 
     override fun onBindGroupViewHolder(holder: GroupViewHolder?, groupPosition: Int, viewType: Int) {
@@ -74,15 +62,32 @@ class DetailListAdapter(val context: Context, val data: DayData) :
         return GroupViewHolder(view)
     }
 
-    class GroupViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    private fun getChildItem(category: String): List<DayData.ResultsBean.DataBean> {
+        if (category.equals("iOS")) {
+            return data.results?.ios!!
+        } else if (category.equals("休息视频")) {
+            return data.results?.video!!
+        } else if (category.equals("拓展资源")) {
+            return data.results?.resource!!
+        } else if (category.equals("瞎推荐")) {
+            return data.results?.recommend!!
+        } else if (category.equals("福利")) {
+            return data.results?.weal!!
+        } else if (category.equals("前端")) {
+            return data.results?.web!!
+        }
+        return data.results?.android!!
+    }
+
+    class GroupViewHolder(itemView: View) : AbstractExpandableItemViewHolder(itemView) {
         fun bindViewHolder(itemData: String) {
             itemView.text1.text = itemData
         }
     }
 
-    class ChildViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ChildViewHolder(itemView: View) : AbstractExpandableItemViewHolder(itemView) {
         fun bindViewHolder(itemData: DayData.ResultsBean.DataBean) {
-            itemView.text1.text = itemData.desc + " by " + itemData.who
+            itemView.text2.text = itemData.desc + " by " + itemData.who
         }
     }
 }

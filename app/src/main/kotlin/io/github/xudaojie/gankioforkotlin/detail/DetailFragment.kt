@@ -58,21 +58,12 @@ class DetailFragment : BaseFragment() {
                 TimeUtils.parse(mPublishedAt!!, "yyyy-MM-dd'T'hh:mm:ss.SSS'Z'"), "yyyy/MM/dd")
         service.day(dateFormat).enqueue(object : Callback<DayData>{
             override fun onResponse(call: Call<DayData>?, response: Response<DayData>?) {
-//                val expMgr = RecyclerViewExpandableItemManager(null)
-//                expMgr.defaultGroupsExpandedState = true
-//
-////                mRoot!!.recycler_view.layoutManager = LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false)
-//                mRoot!!.recycler_view.layoutManager = LinearLayoutManager(mActivity)
-//                mRoot!!.recycler_view.adapter = expMgr.createWrappedAdapter(DetailListAdapter(mActivity!!, response!!.body()))
-//
-//                // NOTE: need to disable change animations to ripple effect work properly
-//                (mRoot!!.recycler_view.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
-//                expMgr.attachRecyclerView(mRoot!!.recycler_view)
-
                 // Setup expandable feature and RecyclerView
                 val expMgr = RecyclerViewExpandableItemManager(null)
+                expMgr.defaultGroupsExpandedState = true // 默认为展开状态
 
                 mRoot!!.recycler_view.layoutManager = LinearLayoutManager(mActivity)
+//                mRoot!!.recycler_view.adapter = expMgr.createWrappedAdapter(TestAdapter())
                 mRoot!!.recycler_view.adapter = expMgr.createWrappedAdapter(DetailListAdapter(mActivity!!, response!!.body()))
 
                 // NOTE: need to disable change animations to ripple effect work properly
