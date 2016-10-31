@@ -30,6 +30,7 @@
     val name = if (args.isNotEmpty()) args[0] else "World"
     ```
 13. `nullable!!.toFloat()`强制转换为非空对象,对象为`null`则抛出异常
+14. [泛型](http://www.jianshu.com/p/488fb964b50a)
 
 ### Pattern Matching
 TODO
